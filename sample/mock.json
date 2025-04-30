@@ -1,0 +1,29 @@
+{
+  "name": "example-mock-server",
+  "routes": [
+    {
+      "path": "/hello",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "message": "Hello, world!"
+      }
+    },
+    {
+      "path": "/status",
+      "method": "POST",
+      "status": 201,
+      "response": {
+        "message": "Status created successfully"
+      }
+    },
+    {
+      "path": "/error",
+      "method": "GET",
+      "status": 400,
+      "response": {
+        "error": "Internal server error"
+      }
+    }
+  ]
+}
