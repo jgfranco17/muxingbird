@@ -32,3 +32,10 @@ repos:
       - id: codespell
         args: [-w]
         files: ^.*\.(md|go|jinja|yaml|yml|sh)$
+
+  # Format Markdown docs
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.31.0
+    hooks:
+      - id: markdownlint
+        args: [--config, ".markdownlint.yaml"]
