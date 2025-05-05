@@ -21,23 +21,24 @@ type CustomFormatter struct{}
 
 func (f *CustomFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	// Create a custom format for the log message
-	level := strings.ToUpper(entry.Level.String())
 	timestamp := entry.Time.Format(time.DateTime)
-	colorFunc := color.New(setOutputColorPerLevel(level)).SprintFunc()
-	logMessage := fmt.Sprintf("[%s][%s] %s\n", timestamp, colorFunc(level), entry.Message)
+	colorFunc := color.New(setOutputColorPerLevel(entry.Level)).SprintFunc()
+	logMessage := fmt.Sprintf("[%s][%s] %s\n", timestamp, colorFunc(strings.ToUpper(entry.Level.String())), entry.Message)
 	return []byte(logMessage), nil
 }
 
-func setOutputColorPerLevel(level string) color.Attribute {
+func setOutputColorPerLevel(level logrus.Level) color.Attribute {
 	var selectedColor color.Attribute
 	switch level {
-	case "DEBUG":
+	case logrus.TraceLevel:
+		selectedColor = color.FgBlue
+	case logrus.DebugLevel:
 		selectedColor = color.FgCyan
-	case "INFO":
+	case logrus.InfoLevel:
 		selectedColor = color.FgGreen
-	case "WARN", "WARNING":
+	case logrus.WarnLevel:
 		selectedColor = color.FgYellow
-	case "ERROR", "PANIC", "FATAL":
+	case logrus.ErrorLevel, logrus.PanicLevel, logrus.FatalLevel:
 		selectedColor = color.FgRed
 	default:
 		selectedColor = color.FgWhite

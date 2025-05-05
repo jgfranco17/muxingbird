@@ -10,14 +10,12 @@ import (
 )
 
 func TestSetLoggingLevelPerColor(t *testing.T) {
-	expectedColorPerLevel := map[string]color.Attribute{
-		// Valid cases
-		"DEBUG": color.FgCyan,
-		"INFO":  color.FgGreen,
-		"WARN":  color.FgYellow,
-		"ERROR": color.FgRed,
-		// Sample invalid case hits default
-		"INVALID": color.FgWhite,
+	expectedColorPerLevel := map[logrus.Level]color.Attribute{
+		logrus.TraceLevel: color.FgBlue,
+		logrus.DebugLevel: color.FgCyan,
+		logrus.InfoLevel:  color.FgGreen,
+		logrus.WarnLevel:  color.FgYellow,
+		logrus.ErrorLevel: color.FgRed,
 	}
 	for level, color := range expectedColorPerLevel {
 		assert.Equal(t, color, setOutputColorPerLevel(level))
