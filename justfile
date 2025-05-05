@@ -22,5 +22,5 @@ build:
 
 # Sync Go modules
 tidy:
-    cd api && go mod tidy
+    go mod tidy
     go work sync
