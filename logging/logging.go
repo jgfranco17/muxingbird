@@ -19,11 +19,12 @@ func NewLogger() *logrus.Logger {
 
 type CustomFormatter struct{}
 
+// Format the log entry into clean, colored log messages.
 func (f *CustomFormatter) Format(entry *logrus.Entry) ([]byte, error) {
-	// Create a custom format for the log message
-	timestamp := entry.Time.Format(time.DateTime)
-	colorFunc := color.New(setOutputColorPerLevel(entry.Level)).SprintFunc()
-	logMessage := fmt.Sprintf("[%s][%s] %s\n", timestamp, colorFunc(strings.ToUpper(entry.Level.String())), entry.Message)
+	timestamp := entry.Time.Format(time.TimeOnly)
+	colorFunc := color.New(setOutputColorPerLevel(entry.Level), color.Bold).SprintFunc()
+	coloredLevel := colorFunc(strings.ToUpper(entry.Level.String()))
+	logMessage := fmt.Sprintf("[%s][%s] %s\n", timestamp, coloredLevel, entry.Message)
 	return []byte(logMessage), nil
 }
 
