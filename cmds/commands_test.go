@@ -1,0 +1,56 @@
+package cmds
+
+import (
+	"errors"
+	"io"
+	"testing"
+
+	"github.com/jgfranco17/muxingbird/internal"
+	"github.com/stretchr/testify/assert"
+)
+
+type mockService struct {
+	runCalled   bool
+	expectedErr error
+}
+
+func (m *mockService) Run() error {
+	m.runCalled = true
+	return m.expectedErr
+}
+
+func (m *mockService) WasCalled() bool {
+	return m.runCalled
+}
+
+func newMockFactory(service *mockService) ServiceFactory {
+	return func(r io.Reader, port int) (HttpService, error) {
+		return service, nil
+	}
+}
+
+func TestRunCommandSuccess(t *testing.T) {
+	mock := &mockService{}
+	factory := newMockFactory(mock)
+	cmd := CommandRun(factory)
+	result := internal.ExecuteTestCommand(t, cmd, "./resources/mock.json")
+	assert.NoError(t, result.Error, "Unexpected error while executing run command")
+}
+
+func TestRunCommandFail_InvalidPath(t *testing.T) {
+	mock := &mockService{}
+	factory := newMockFactory(mock)
+	cmd := CommandRun(factory)
+	result := internal.ExecuteTestCommand(t, cmd, "nonexistent")
+	assert.ErrorContains(t, result.Error, "no such file")
+}
+
+func TestRunCommandFail_ServiceFactoryError(t *testing.T) {
+	mock := &mockService{
+		expectedErr: errors.New("some mock error"),
+	}
+	factory := newMockFactory(mock)
+	cmd := CommandRun(factory)
+	result := internal.ExecuteTestCommand(t, cmd, "./resources/mock.json")
+	assert.ErrorContains(t, result.Error, "some mock error")
+}

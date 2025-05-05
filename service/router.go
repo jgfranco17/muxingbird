@@ -18,7 +18,7 @@ type Server struct {
 
 func NewRestService(r io.Reader, port int) (*Server, error) {
 	logger := logging.NewLogger()
-	serviceConfig, err := config.LoadFromReader(r)
+	serviceConfig, err := config.LoadFromContent(r)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to read config: %w", err)
 	}
@@ -38,5 +38,7 @@ func NewRestService(r io.Reader, port int) (*Server, error) {
 }
 
 func (s *Server) Run() error {
+	logger := logging.NewLogger()
+	logger.Infof("Starting service on port %d", s.port)
 	return http.ListenAndServe(fmt.Sprintf(":%d", s.port), s.router)
 }

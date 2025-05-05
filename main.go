@@ -19,7 +19,7 @@ func main() {
 	logger := logging.NewLogger()
 	command := cmds.NewCommandRegistry(projectName, projectDescription, version)
 	commandsList := []*cobra.Command{
-		cmds.CommandRun(),
+		cmds.CommandRun(cmds.DefaultServiceFactory),
 	}
 	command.RegisterCommands(commandsList)
 	if err := command.Execute(); err != nil {
