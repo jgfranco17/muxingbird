@@ -1,4 +1,4 @@
-package config
+package service
 
 // MockServer represents a single HTTP server's configuration.
 type MockServer struct {

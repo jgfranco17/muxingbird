@@ -7,7 +7,6 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"github.com/jgfranco17/muxingbird/config"
 	"github.com/jgfranco17/muxingbird/logging"
 )
 
@@ -18,7 +17,7 @@ type Server struct {
 
 func NewRestService(r io.Reader, port int) (*Server, error) {
 	logger := logging.NewLogger()
-	serviceConfig, err := config.LoadFromContent(r)
+	serviceConfig, err := LoadFromContent(r)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to read config: %w", err)
 	}
