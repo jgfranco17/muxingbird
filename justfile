@@ -5,7 +5,7 @@ default:
     @just --list
 
 # Run the CLI
-cli *args:
+muxingbird *args:
     @go run . {{ args }}
 
 # Execute unit tests
