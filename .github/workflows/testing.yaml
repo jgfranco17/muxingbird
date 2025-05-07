@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   unit-tests:
+    name: "Unit Tests"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,7 +25,9 @@ jobs:
       - name: Run unit tests
         run: |
           just test
-  run-integration-test:
+
+  integration-test:
+    name: "Integration Test"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
