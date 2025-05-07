@@ -2,19 +2,20 @@
   "name": "example-mock-server",
   "routes": [
     {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "status": "healthy",
+        "current": "landing-page"
+      }
+    },
+    {
       "path": "/hello",
       "method": "GET",
       "status": 200,
       "response": {
         "message": "Hello, world!"
-      }
-    },
-    {
-      "path": "/status",
-      "method": "POST",
-      "status": 201,
-      "response": {
-        "message": "Status created successfully"
       }
     },
     {

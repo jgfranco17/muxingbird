@@ -53,6 +53,7 @@ func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 			if err != nil {
 				return err
 			}
+			logger.Debugf("Using config: %s", path)
 			server, err := serviceFactory(ctx, file, port)
 			if err != nil {
 				return err

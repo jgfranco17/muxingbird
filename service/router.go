@@ -11,10 +11,15 @@ import (
 	"github.com/jgfranco17/muxingbird/logging"
 )
 
+const (
+	localhostAddr string = "127.0.0.1"
+)
+
 // Wrapper struct for running the mock HTTP service
 type Server struct {
 	router *chi.Mux
 	port   int
+	config *ServerConfig
 }
 
 // NewRestService creates a new HTTP mock server from a JSON spec.
@@ -23,7 +28,7 @@ type Server struct {
 // to extract a logger for route registration logging.
 func NewRestService(ctx context.Context, r io.Reader, port int) (*Server, error) {
 	logger := logging.FromContext(ctx)
-	serviceConfig, err := LoadFromContent(r)
+	cfg, err := LoadFromContent(r)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to read config: %w", err)
 	}
@@ -31,21 +36,26 @@ func NewRestService(ctx context.Context, r io.Reader, port int) (*Server, error)
 	router.Use(middleware.Logger)
 	router.Use(middleware.RequestID)
 	router.Use(middleware.Recoverer)
-	for _, e := range serviceConfig.Routes {
+	for _, e := range cfg.Routes {
 		handler := CreateNewMockHandler(e.Status, e.Response)
 		router.MethodFunc(e.Method, e.Path, handler)
 		logger.Debugf("Registered route: %s %s (returns HTTP %d)", e.Method, e.Path, e.Status)
 	}
-	logger.Infof("Loaded %d routes", len(serviceConfig.Routes))
+	logger.Infof("Loaded %d routes from specification", len(cfg.Routes))
 	return &Server{
 		router: router,
 		port:   port,
+		config: cfg,
 	}, nil
+}
+
+func (s *Server) Address() string {
+	return fmt.Sprintf("%s:%d", localhostAddr, s.port)
 }
 
 // Run starts the HTTP server and begins listening on the configured port.
 func (s *Server) Run(ctx context.Context) error {
 	logger := logging.FromContext(ctx)
-	logger.Infof("Starting service on port %d", s.port)
-	return http.ListenAndServe(fmt.Sprintf(":%d", s.port), s.router)
+	logger.Infof("Starting service on port http://%s", s.Address())
+	return http.ListenAndServe(s.Address(), s.router)
 }
