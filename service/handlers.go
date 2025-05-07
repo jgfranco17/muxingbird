@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// CreateNewMockHandler instantiates a new HTTP handler for a mock endpoint.
 func CreateNewMockHandler(statusCode int, content any) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		err := json.NewEncoder(w).Encode(content)

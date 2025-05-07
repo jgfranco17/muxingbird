@@ -34,6 +34,7 @@ func DefaultServiceFactory(ctx context.Context, r io.Reader, port int) (HttpServ
 	return srv, nil
 }
 
+// CommandRun creates a new Cobra command for running the HTTP service.
 func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 	var port int
 	var maxDuration time.Duration
