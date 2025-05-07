@@ -1,0 +1,8 @@
+services:
+  muxingbird-cli:
+    container_name: muxingbird-cli
+    build:
+      context: .
+      dockerfile: docker/cli.Dockerfile
+    ports:
+      - 8000:8000

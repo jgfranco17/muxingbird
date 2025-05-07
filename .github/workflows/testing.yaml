@@ -24,3 +24,30 @@ jobs:
       - name: Run unit tests
         run: |
           just test
+  run-integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up workspace
+        uses: ./.github/actions/setup-workspace
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: "latest"
+
+      - name: Build Docker image
+        run: |
+          just docker-build
+          docker image ls
+
+      - name: Run CLI image
+        run: |
+          just docker-run --version
+
+      - name: Clean up
+        run: |
+          TARGET=$(docker images | grep "muxingbird" | awk "{print \$3}")
+          docker rmi "${TARGET}" --force

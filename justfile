@@ -1,5 +1,8 @@
 # PROJECT COMMAND RUNNER
 
+PROJECT_NAME := "muxingbird"
+INSTALL_PATH := "${HOME}/.local/bin"
+
 # Default command
 default:
     @just --list
@@ -16,9 +19,33 @@ test:
 
 # Build Docker image
 build:
-	@echo "Building Docker image..."
-	docker build -t muxingbird:latest -f .docker/api.Dockerfile .
-	@echo "Docker image built successfully!"
+    #!/usr/bin/env bash
+    echo "Building {{ PROJECT_NAME }} binary..."
+    go mod download all
+    VERSION=$(jq -r .version specs.json)
+    CGO_ENABLED=0 GOOS=linux go build \
+        -ldflags="-X main.version=${VERSION}"\
+        -o ./{{ PROJECT_NAME }} .
+    chmod +x ./{{ PROJECT_NAME }}
+    echo "Built binary for {{ PROJECT_NAME }} ${VERSION} successfully!"
+
+# Install the CLI locally in bin
+install-local: build
+    #!/usr/bin/env bash
+    cp ./{{ PROJECT_NAME }} {{ INSTALL_PATH }}
+    echo $PATH | grep -q {{ INSTALL_PATH }} || exit 1
+    echo "Installed Muxingbird in local: {{ INSTALL_PATH }}/{{ PROJECT_NAME }}"
+
+# Build the docker image
+docker-build:
+    docker compose -f docker-compose.yaml build --no-cache
+
+# Run the CLI in Docker
+docker-run *args:
+    #!/usr/bin/env bash
+    docker compose \
+        -f docker-compose.yaml \
+        run --rm --remove-orphans muxingbird-cli {{ args }}
 
 # Sync Go modules
 tidy:

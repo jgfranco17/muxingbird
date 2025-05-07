@@ -1,0 +1,8 @@
+{
+  "author": "Joaquin Gabriel Franco",
+  "name": "muxingbird",
+  "version": "0.0.1",
+  "repository": "https://github.com/jgfranco17/muxingbird",
+  "license": "BSD-3-Clause",
+  "languages": ["Go"]
+}
