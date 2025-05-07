@@ -14,7 +14,7 @@ type ctxKeyLogger struct{}
 
 // NewLogger configures and registers a new logger instance.
 func NewLogger() *logrus.Logger {
-	logger := logrus.New()
+	logger := logrus.StandardLogger()
 	logger.SetReportCaller(true)
 	logger.SetFormatter(&CustomFormatter{})
 	return logger
