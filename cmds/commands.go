@@ -43,7 +43,7 @@ func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 		Short: "Run the server from the config",
 		Long:  "Spin up the HTTP service based on the definitions file",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			ctx, cancel := context.WithCancel(context.Background())
+			ctx, cancel := context.WithTimeout(context.Background(), maxDuration)
 			defer cancel()
 			logger := logging.NewLogger()
 			ctx = logging.ApplyToContext(ctx, logger)
