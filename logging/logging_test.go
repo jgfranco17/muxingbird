@@ -1,12 +1,14 @@
 package logging
 
 import (
+	"context"
 	"testing"
 	"time"
 
 	"github.com/fatih/color"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestSetLoggingLevelPerColor(t *testing.T) {
@@ -46,4 +48,25 @@ func TestCustomFormatterFormat(t *testing.T) {
 	assert.Contains(t, outputStr, expectedTimestamp)
 	colorFunc := color.New(color.FgGreen).SprintFunc()
 	assert.Contains(t, outputStr, colorFunc("INFO"))
+}
+
+func TestApplyToContextAndFromContext_Success(t *testing.T) {
+	ctx := context.Background()
+	logger := logrus.New()
+
+	ctxWithLogger := ApplyToContext(ctx, logger)
+
+	retrieved := FromContext(ctxWithLogger)
+	require.NotNil(t, retrieved, "Logger should not be nil")
+	assert.Equal(t, logger, retrieved, "Retrieved logger should match the original")
+}
+
+func TestFromContext_PanicsWhenMissing(t *testing.T) {
+	defer func() {
+		r := recover()
+		require.NotNil(t, r, "Expected panic when logger is missing from context")
+	}()
+
+	ctx := context.TODO()
+	_ = FromContext(ctx)
 }

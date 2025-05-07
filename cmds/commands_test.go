@@ -1,6 +1,7 @@
 package cmds
 
 import (
+	"context"
 	"errors"
 	"io"
 	"testing"
@@ -14,7 +15,7 @@ type mockService struct {
 	expectedErr error
 }
 
-func (m *mockService) Run() error {
+func (m *mockService) Run(ctx context.Context) error {
 	m.runCalled = true
 	return m.expectedErr
 }
@@ -24,7 +25,7 @@ func (m *mockService) WasCalled() bool {
 }
 
 func newMockFactory(service *mockService) ServiceFactory {
-	return func(r io.Reader, port int) (HttpService, error) {
+	return func(ctx context.Context, r io.Reader, port int) (HttpService, error) {
 		return service, nil
 	}
 }

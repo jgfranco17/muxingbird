@@ -1,6 +1,7 @@
 package service
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
@@ -15,8 +16,8 @@ type Server struct {
 	port   int
 }
 
-func NewRestService(r io.Reader, port int) (*Server, error) {
-	logger := logging.NewLogger()
+func NewRestService(ctx context.Context, r io.Reader, port int) (*Server, error) {
+	logger := logging.FromContext(ctx)
 	serviceConfig, err := LoadFromContent(r)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to read config: %w", err)
@@ -36,8 +37,8 @@ func NewRestService(r io.Reader, port int) (*Server, error) {
 	}, nil
 }
 
-func (s *Server) Run() error {
-	logger := logging.NewLogger()
+func (s *Server) Run(ctx context.Context) error {
+	logger := logging.FromContext(ctx)
 	logger.Infof("Starting service on port %d", s.port)
 	return http.ListenAndServe(fmt.Sprintf(":%d", s.port), s.router)
 }

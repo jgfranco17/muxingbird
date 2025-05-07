@@ -1,6 +1,7 @@
 package logging
 
 import (
+	"context"
 	"fmt"
 	"strings"
 	"time"
@@ -9,11 +10,28 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+type ctxKeyLogger struct{}
+
 // NewLogger configures and registers a new logger instance.
 func NewLogger() *logrus.Logger {
-	logger := logrus.StandardLogger()
+	logger := logrus.New()
 	logger.SetReportCaller(true)
 	logger.SetFormatter(&CustomFormatter{})
+	return logger
+}
+
+// ApplyToContext attaches a logger to the given context
+func ApplyToContext(ctx context.Context, logger *logrus.Logger) context.Context {
+	return context.WithValue(ctx, ctxKeyLogger{}, logger)
+}
+
+// FromContext loads a logger from context. Any code path MUST be
+// sure that a logger is attached, or the function will panic.
+func FromContext(ctx context.Context) *logrus.Logger {
+	logger, ok := ctx.Value(ctxKeyLogger{}).(*logrus.Logger)
+	if !ok {
+		panic("No logger attached in context")
+	}
 	return logger
 }
 
