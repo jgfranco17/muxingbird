@@ -4,10 +4,15 @@ PROJECT_NAME := "muxingbird"
 INSTALL_PATH := "${HOME}/.local/bin"
 
 # Default command
-default:
+_default:
     @just --list
 
-# Run the CLI
+# Sync Go modules
+tidy:
+    go mod tidy
+    go work sync
+
+# Run the CLI in dev mode
 muxingbird *args:
     @go run . {{ args }}
 
@@ -17,7 +22,7 @@ test:
     go clean -testcache
     go test -cover ./...
 
-# Build Docker image
+# Build a local binary
 build:
     #!/usr/bin/env bash
     echo "Building {{ PROJECT_NAME }} binary..."
@@ -36,7 +41,7 @@ install-local: build
     echo $PATH | grep -q {{ INSTALL_PATH }} || exit 1
     echo "Installed Muxingbird in local: {{ INSTALL_PATH }}/{{ PROJECT_NAME }}"
 
-# Build the docker image
+# Build the Docker image
 docker-build:
     docker compose -f docker-compose.yaml build --no-cache
 
@@ -46,8 +51,3 @@ docker-run *args:
     docker compose \
         -f docker-compose.yaml \
         run --rm --remove-orphans muxingbird-cli {{ args }}
-
-# Sync Go modules
-tidy:
-    go mod tidy
-    go work sync
