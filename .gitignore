@@ -15,11 +15,12 @@
 .env
 .envrc
 
-# Test binary, built with `go test -c`
+# Local builds
+muxingbird
+
+# Test artifacts
 *.test
 *.html
-
-# Output of the go coverage tool
 *.out
 
 # IDE
@@ -27,6 +28,7 @@
 .vscode/
 
 # Go workspace file
+go.work
 go.work.sum
 
 # Terraform

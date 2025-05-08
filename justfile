@@ -37,6 +37,7 @@ build:
 # Install the CLI locally in bin
 install-local: build
     #!/usr/bin/env bash
+    echo "Installing local binary at {{ INSTALL_PATH }}"
     cp ./{{ PROJECT_NAME }} {{ INSTALL_PATH }}
     echo $PATH | grep -q {{ INSTALL_PATH }} || exit 1
     echo "Installed Muxingbird in local: {{ INSTALL_PATH }}/{{ PROJECT_NAME }}"
