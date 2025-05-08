@@ -5,7 +5,7 @@ INSTALL_PATH := "${HOME}/.local/bin"
 
 # Default command
 _default:
-    @just --list
+    @just --list --unsorted
 
 # Sync Go modules
 tidy:
@@ -48,7 +48,6 @@ docker-build:
 
 # Run the CLI in Docker
 docker-run *args:
-    #!/usr/bin/env bash
     docker compose \
         -f docker-compose.yaml \
         run --rm --remove-orphans muxingbird-cli {{ args }}
