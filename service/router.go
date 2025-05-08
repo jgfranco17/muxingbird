@@ -39,9 +39,9 @@ func NewRestService(ctx context.Context, r io.Reader, port int) (*Server, error)
 	for _, e := range cfg.Routes {
 		handler := CreateNewMockHandler(e.Status, e.Response)
 		router.MethodFunc(e.Method, e.Path, handler)
-		logger.Debugf("Registered route: %s %s (returns HTTP %d)", e.Method, e.Path, e.Status)
+		logger.Tracef("Registered route: %s %s (returns HTTP %d)", e.Method, e.Path, e.Status)
 	}
-	logger.Infof("Loaded %d routes from specification", len(cfg.Routes))
+	logger.Debugf("Loaded %d routes from specification", len(cfg.Routes))
 	return &Server{
 		router: router,
 		port:   port,
@@ -56,6 +56,6 @@ func (s *Server) Address() string {
 // Run starts the HTTP server and begins listening on the configured port.
 func (s *Server) Run(ctx context.Context) error {
 	logger := logging.FromContext(ctx)
-	logger.Infof("Starting service on port http://%s", s.Address())
+	logger.Infof("Starting service at http://%s", s.Address())
 	return http.ListenAndServe(s.Address(), s.router)
 }

@@ -1,6 +1,7 @@
 package cmds
 
 import (
+	"github.com/jgfranco17/muxingbird/logging"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -35,6 +36,10 @@ func NewCommandRegistry(name string, description string, version string) *Comman
 				level = logrus.WarnLevel
 			}
 			logrus.SetLevel(level)
+
+			logger := logging.NewLogger()
+			ctx := logging.ApplyToContext(cmd.Context(), logger)
+			cmd.SetContext(ctx)
 		},
 	}
 	newRegistry := &CommandRegistry{

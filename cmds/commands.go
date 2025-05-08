@@ -37,17 +37,16 @@ func DefaultServiceFactory(ctx context.Context, r io.Reader, port int) (HttpServ
 // CommandRun creates a new Cobra command for running the HTTP service.
 func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 	var port int
-	var maxDuration time.Duration
+	var activeDuration time.Duration
 	cmd := &cobra.Command{
 		Use:   "run",
 		Args:  cobra.ExactArgs(1),
 		Short: "Run the server from the config",
 		Long:  "Spin up the HTTP service based on the definitions file",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			ctx, cancel := context.WithTimeout(context.Background(), maxDuration)
+			logger := logging.FromContext(cmd.Context())
+			ctx, cancel := context.WithTimeout(cmd.Context(), activeDuration)
 			defer cancel()
-			logger := logging.NewLogger()
-			ctx = logging.ApplyToContext(ctx, logger)
 			path := args[0]
 			file, err := os.Open(path)
 			if err != nil {
@@ -58,12 +57,13 @@ func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 			if err != nil {
 				return err
 			}
+			logger.Debugf("Server configured with uptime of %s", activeDuration)
 			return server.Run(ctx)
 		},
 		SilenceUsage:  true,
 		SilenceErrors: true,
 	}
-	cmd.Flags().DurationVarP(&maxDuration, "duration", "d", defaultMaxDuration, "Maximum duration to run server")
+	cmd.Flags().DurationVarP(&activeDuration, "duration", "d", defaultMaxDuration, "Maximum duration to run server")
 	cmd.Flags().IntVarP(&port, "port", "p", defaultPort, "Port to run server on")
 	return cmd
 }
