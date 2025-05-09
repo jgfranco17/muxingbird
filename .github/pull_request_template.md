@@ -17,8 +17,8 @@
 
 <!-- All points must be addressed before merge -->
 
-[ ] Release notes have been added
-[ ] New code is covered by tests
+- [ ] Release notes have been added for new features
+- [ ] Changes are covered by tests
 
 ## Testing
 
