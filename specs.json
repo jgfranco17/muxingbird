@@ -1,5 +1,5 @@
 {
-  "author": "Joaquin Gabriel Franco",
+  "author": "Joaquin Franco",
   "name": "muxingbird",
   "description": "CLI tool to rapidly spin up mock servers from a definitions file",
   "version": "0.0.1",

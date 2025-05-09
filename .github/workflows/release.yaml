@@ -51,7 +51,7 @@ jobs:
       - name: Build binary
         id: build-binary
         run: |
-          just tidy
+          go mod tidy
           go mod download all
           mkdir -p \
             build/${{ env.BUILD_LINUX }} \

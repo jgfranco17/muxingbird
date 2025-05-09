@@ -10,7 +10,6 @@ _default:
 # Sync Go modules
 tidy:
     go mod tidy
-    go work sync
 
 # Run the CLI in dev mode
 muxingbird *args:
