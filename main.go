@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/jgfranco17/muxingbird/cmds"
-	"github.com/jgfranco17/muxingbird/logging"
 	"github.com/spf13/cobra"
 )
 
@@ -16,13 +15,10 @@ var (
 )
 
 func main() {
-	logger := logging.NewLogger()
 	command := cmds.NewCommandRegistry(projectName, projectDescription, version)
 	commandsList := []*cobra.Command{
 		cmds.CommandRun(cmds.DefaultServiceFactory),
 	}
 	command.RegisterCommands(commandsList)
-	if err := command.Execute(); err != nil {
-		logger.Fatalf("Muxingbird error: %v", err)
-	}
+	command.Execute()
 }

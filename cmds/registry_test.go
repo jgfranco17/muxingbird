@@ -32,7 +32,6 @@ func TestRegisterCommands_RegistersSubcommands(t *testing.T) {
 	reg.RegisterCommands([]*cobra.Command{mockCmd})
 
 	reg.rootCmd.Root().SetArgs([]string{"mock"})
-	err := reg.Execute()
-	require.NoError(t, err)
+	reg.Execute()
 	assert.True(t, called)
 }

@@ -7,9 +7,11 @@ import (
 	"testing"
 
 	"github.com/jgfranco17/muxingbird/internal"
-	"github.com/jgfranco17/muxingbird/logging"
-	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"
+)
+
+const (
+	testValidSpecJsonFile string = "./resources/mock.json"
 )
 
 type mockService struct {
@@ -32,18 +34,11 @@ func newMockFactory(service *mockService) ServiceFactory {
 	}
 }
 
-func applyContextLogger(cmd *cobra.Command) {
-	logger := logging.NewLogger()
-	ctx := logging.ApplyToContext(context.Background(), logger)
-	cmd.SetContext(ctx)
-}
-
 func TestRunCommandSuccess(t *testing.T) {
 	mock := &mockService{}
 	factory := newMockFactory(mock)
 	cmd := CommandRun(factory)
-	applyContextLogger(cmd)
-	result := internal.ExecuteTestCommand(t, cmd, "./resources/mock.json")
+	result := internal.ExecuteTestCommand(t, cmd, testValidSpecJsonFile)
 	assert.NoError(t, result.Error, "Unexpected error while executing run command")
 }
 
@@ -51,7 +46,6 @@ func TestRunCommandFail_InvalidPath(t *testing.T) {
 	mock := &mockService{}
 	factory := newMockFactory(mock)
 	cmd := CommandRun(factory)
-	applyContextLogger(cmd)
 	result := internal.ExecuteTestCommand(t, cmd, "nonexistent")
 	assert.ErrorContains(t, result.Error, "no such file")
 }
@@ -62,7 +56,6 @@ func TestRunCommandFail_ServiceFactoryError(t *testing.T) {
 	}
 	factory := newMockFactory(mock)
 	cmd := CommandRun(factory)
-	applyContextLogger(cmd)
-	result := internal.ExecuteTestCommand(t, cmd, "./resources/mock.json")
+	result := internal.ExecuteTestCommand(t, cmd, testValidSpecJsonFile)
 	assert.ErrorContains(t, result.Error, "some mock error")
 }
