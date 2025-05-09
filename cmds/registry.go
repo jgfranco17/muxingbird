@@ -1,6 +1,7 @@
 package cmds
 
 import (
+	"github.com/jgfranco17/muxingbird/errorx"
 	"github.com/jgfranco17/muxingbird/logging"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -10,6 +11,8 @@ var (
 	verbosity int
 )
 
+// CommandRegistry wraps the root command and core
+// attributes of the CLI.
 type CommandRegistry struct {
 	rootCmd   *cobra.Command
 	verbosity int
@@ -19,6 +22,7 @@ type CommandRegistry struct {
 // NewCommandRegistry creates a new instance of CommandRegistry
 func NewCommandRegistry(name string, description string, version string) *CommandRegistry {
 	var level logrus.Level
+	logger := logging.NewLogger()
 	root := &cobra.Command{
 		Use:     name,
 		Version: version,
@@ -35,15 +39,14 @@ func NewCommandRegistry(name string, description string, version string) *Comman
 			default:
 				level = logrus.WarnLevel
 			}
-			logrus.SetLevel(level)
-
-			logger := logging.NewLogger()
+			logger.SetLevel(level)
 			ctx := logging.ApplyToContext(cmd.Context(), logger)
 			cmd.SetContext(ctx)
 		},
 	}
 	newRegistry := &CommandRegistry{
 		rootCmd: root,
+		logger:  logger,
 	}
 	root.PersistentFlags().CountVarP(&newRegistry.verbosity, "verbose", "v", "Increase verbosity (-v or -vv)")
 	return newRegistry
@@ -56,7 +59,13 @@ func (cr *CommandRegistry) RegisterCommands(commands []*cobra.Command) {
 	}
 }
 
-// Execute executes the root command
-func (cr *CommandRegistry) Execute() error {
-	return cr.rootCmd.Execute()
+// Execute executes the root command and handles
+// any error that may propagate. This allows us to
+// return an appropriate exit code when possible.
+func (cr *CommandRegistry) Execute() {
+	defer errorx.HandleRecovery(cr.logger)
+	err := cr.rootCmd.Execute()
+	if err != nil {
+		errorx.HandleError(cr.logger, err)
+	}
 }

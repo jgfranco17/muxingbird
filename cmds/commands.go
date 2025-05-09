@@ -2,12 +2,12 @@ package cmds
 
 import (
 	"context"
-	"io"
 	"os"
+	"path/filepath"
 	"time"
 
+	"github.com/jgfranco17/muxingbird/errorx"
 	"github.com/jgfranco17/muxingbird/logging"
-	"github.com/jgfranco17/muxingbird/service"
 	"github.com/spf13/cobra"
 )
 
@@ -15,24 +15,6 @@ const (
 	defaultPort        int           = 8000
 	defaultMaxDuration time.Duration = 5 * time.Minute
 )
-
-type HttpService interface {
-	Run(ctx context.Context) error
-}
-
-type ShellExecutor interface {
-	Exec(ctx context.Context, name string, args string) (int, string, error)
-}
-
-type ServiceFactory func(ctx context.Context, r io.Reader, port int) (HttpService, error)
-
-func DefaultServiceFactory(ctx context.Context, r io.Reader, port int) (HttpService, error) {
-	srv, err := service.NewRestService(ctx, r, port)
-	if err != nil {
-		return nil, err
-	}
-	return srv, nil
-}
 
 // CommandRun creates a new Cobra command for running the HTTP service.
 func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
@@ -47,15 +29,18 @@ func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 			logger := logging.FromContext(cmd.Context())
 			ctx, cancel := context.WithTimeout(cmd.Context(), activeDuration)
 			defer cancel()
-			path := args[0]
+			path, err := filepath.Abs(args[0])
+			if err != nil {
+				return errorx.NewErrorWithCode(err, errorx.ExitInvalidArgs)
+			}
 			file, err := os.Open(path)
 			if err != nil {
-				return err
+				return errorx.NewErrorWithCode(err, errorx.ExitFileNotFound)
 			}
 			logger.Debugf("Using config: %s", path)
 			server, err := serviceFactory(ctx, file, port)
 			if err != nil {
-				return err
+				return errorx.NewErrorWithCode(err, errorx.ExitConfigError)
 			}
 			logger.Debugf("Server configured with uptime of %s", activeDuration)
 			return server.Run(ctx)
