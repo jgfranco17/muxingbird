@@ -7,6 +7,10 @@ on:
     paths:
       - "specs.json"
 
+env:
+  BUILD_LINUX: "linux-amd64"
+  BUILD_DARWIN: "darwin-amd64"
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -49,25 +53,32 @@ jobs:
         run: |
           just tidy
           go mod download all
-          mkdir -p build/linux-amd64 build/darwin-amd64
-          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-X main.version=${VERSION}" -o ./build/linux-amd64/muxingbird main.go
-          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-X main.version=${VERSION}" -o ./build/darwin-amd64/muxingbird main.go
+          mkdir -p \
+            build/${{ env.BUILD_LINUX }} \
+            build/${{ env.BUILD_DARWIN }}
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+            -ldflags="-X main.version=${VERSION}" \
+            -o ./build/${{ env.BUILD_LINUX }}/muxingbird .
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+            -ldflags="-X main.version=${VERSION}" \
+            -o ./build/${{ env.BUILD_DARWIN }}/muxingbird .
           echo "Created binary builds!"
 
       - name: Create archive
         run: |
           mkdir -p release
-          tar -czvf release/muxingbird-${{ env.VERSION }}-linux-amd64.tar.gz -C ./build/linux-amd64 muxingbird
-          tar -czvf release/muxingbird-${{ env.VERSION }}-darwin-amd64.tar.gz -C ./build/darwin-amd64 muxingbird
+          tar -czvf release/muxingbird-${{ env.VERSION }}-${{ env.BUILD_LINUX }}.tar.gz -C ./build/${{ env.BUILD_LINUX }} muxingbird
+          tar -czvf release/muxingbird-${{ env.VERSION }}-${{ env.BUILD_DARWIN }}.tar.gz -C ./build/${{ env.BUILD_DARWIN }} muxingbird
 
       - name: Create Github release
+        if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.USER_GITHUB_TOKEN }}
           VERSION: ${{ env.VERSION }}
         run: |
           gh release create "${{ env.VERSION }}" \
-            release/muxingbird-${{ env.VERSION }}-linux-amd64.tar.gz \
-            release/muxingbird-${{ env.VERSION }}-darwin-amd64.tar.gz \
+            release/muxingbird-${{ env.VERSION }}-${{ env.BUILD_LINUX }}.tar.gz \
+            release/muxingbird-${{ env.VERSION }}-${{ env.BUILD_DARWIN }}.tar.gz \
             --notes-file ".github/releases/${{ env.VERSION }}.md"
 
       - name: Create release job summary
