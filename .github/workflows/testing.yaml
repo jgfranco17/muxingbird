@@ -4,9 +4,13 @@ name: Testing
   push:
     branches:
       - "**"
+    paths:
+      - "**.go"
   pull_request:
     branches:
       - "main"
+    paths:
+      - "**.go"
 
 permissions:
   contents: read
