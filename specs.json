@@ -1,6 +1,7 @@
 {
   "author": "Joaquin Gabriel Franco",
   "name": "muxingbird",
+  "description": "CLI tool to rapidly spin up mock servers from a definitions file",
   "version": "0.0.1",
   "repository": "https://github.com/jgfranco17/muxingbird",
   "license": "BSD-3-Clause",
