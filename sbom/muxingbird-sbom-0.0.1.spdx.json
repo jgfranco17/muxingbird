@@ -1,0 +1,981 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:f0ec18e3-e9d0-42ee-acb8-ffe8ae189ec7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-05-10T12:21:28+09:00",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.23.1"
+        }
+      ]
+    },
+    "component": {
+      "bom-ref": "af63bd4c8601b7f1",
+      "type": "file",
+      "name": "."
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "0368f8b3e13d0e74",
+      "type": "library",
+      "name": "./.github/actions/setup-workspace",
+      "version": "UNKNOWN",
+      "cpe": "cpe:2.3:a:.\\/.github\\/actions\\/setup-workspace:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup-workspace:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup_workspace:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup_workspace:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/linting.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "6ac8612e785e9a5d",
+      "type": "library",
+      "name": "./.github/actions/setup-workspace",
+      "version": "UNKNOWN",
+      "cpe": "cpe:2.3:a:.\\/.github\\/actions\\/setup-workspace:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup-workspace:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup_workspace:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup_workspace:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/release.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "74323ce090783f5b",
+      "type": "library",
+      "name": "./.github/actions/setup-workspace",
+      "version": "UNKNOWN",
+      "cpe": "cpe:2.3:a:.\\/.github\\/actions\\/setup-workspace:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup-workspace:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup_workspace:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup_workspace:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup:.\\/.github\\/actions\\/setup-workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:.\\/.github\\/actions\\/setup:.\\/.github\\/actions\\/setup_workspace:*:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/testing.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:github/actions/checkout@v3?package-id=8aaa157036ae6d1c",
+      "type": "library",
+      "name": "actions/checkout",
+      "version": "v3",
+      "cpe": "cpe:2.3:a:actions\\/checkout:actions\\/checkout:v3:*:*:*:*:*:*:*",
+      "purl": "pkg:github/actions/checkout@v3",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/release.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:github/actions/checkout@v3?package-id=44b81cdd7481a1b5",
+      "type": "library",
+      "name": "actions/checkout",
+      "version": "v3",
+      "cpe": "cpe:2.3:a:actions\\/checkout:actions\\/checkout:v3:*:*:*:*:*:*:*",
+      "purl": "pkg:github/actions/checkout@v3",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/testing.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:github/actions/checkout@v4?package-id=b612884e6547187e",
+      "type": "library",
+      "name": "actions/checkout",
+      "version": "v4",
+      "cpe": "cpe:2.3:a:actions\\/checkout:actions\\/checkout:v4:*:*:*:*:*:*:*",
+      "purl": "pkg:github/actions/checkout@v4",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/linting.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:github/actions/setup-go@v5?package-id=23cea65ba858ca7d",
+      "type": "library",
+      "name": "actions/setup-go",
+      "version": "v5",
+      "cpe": "cpe:2.3:a:actions\\/setup-go:actions\\/setup-go:v5:*:*:*:*:*:*:*",
+      "purl": "pkg:github/actions/setup-go@v5",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup-go:actions\\/setup_go:v5:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_go:actions\\/setup-go:v5:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_go:actions\\/setup_go:v5:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup-go:v5:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup_go:v5:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/actions/setup-workspace/action.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:github/actions/setup-python@v4?package-id=15c6ef466c8e5b1d",
+      "type": "library",
+      "name": "actions/setup-python",
+      "version": "v4",
+      "cpe": "cpe:2.3:a:actions\\/setup-python:actions\\/setup-python:v4:*:*:*:*:*:*:*",
+      "purl": "pkg:github/actions/setup-python@v4",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup-python:actions\\/setup_python:v4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_python:actions\\/setup-python:v4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup_python:actions\\/setup_python:v4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup-python:v4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:actions\\/setup:actions\\/setup_python:v4:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/linting.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:github/docker/setup-buildx-action@v3?package-id=ee0dd7bc742b2bb1",
+      "type": "library",
+      "name": "docker/setup-buildx-action",
+      "version": "v3",
+      "cpe": "cpe:2.3:a:docker\\/setup-buildx-action:docker\\/setup-buildx-action:v3:*:*:*:*:*:*:*",
+      "purl": "pkg:github/docker/setup-buildx-action@v3",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup-buildx-action:docker\\/setup_buildx_action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup_buildx_action:docker\\/setup-buildx-action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup_buildx_action:docker\\/setup_buildx_action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup-buildx:docker\\/setup-buildx-action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup-buildx:docker\\/setup_buildx_action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup_buildx:docker\\/setup-buildx-action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup_buildx:docker\\/setup_buildx_action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup:docker\\/setup-buildx-action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:docker\\/setup:docker\\/setup_buildx_action:v3:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/workflows/testing.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:github/extractions/setup-just@v2?package-id=16f9759e01573361",
+      "type": "library",
+      "name": "extractions/setup-just",
+      "version": "v2",
+      "cpe": "cpe:2.3:a:extractions\\/setup-just:extractions\\/setup-just:v2:*:*:*:*:*:*:*",
+      "purl": "pkg:github/extractions/setup-just@v2",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "github-actions-usage-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "github-action"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "github-actions-use-statement"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:extractions\\/setup-just:extractions\\/setup_just:v2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:extractions\\/setup_just:extractions\\/setup-just:v2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:extractions\\/setup_just:extractions\\/setup_just:v2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:extractions\\/setup:extractions\\/setup-just:v2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:extractions\\/setup:extractions\\/setup_just:v2:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/.github/actions/setup-workspace/action.yaml"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/davecgh/go-spew@v1.1.1?package-id=4fff1eaa0bc0be66",
+      "type": "library",
+      "name": "github.com/davecgh/go-spew",
+      "version": "v1.1.1",
+      "cpe": "cpe:2.3:a:davecgh:go-spew:v1.1.1:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/davecgh/go-spew@v1.1.1",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:davecgh:go_spew:v1.1.1:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/fatih/color@v1.18.0?package-id=42c16c13a5380dfc",
+      "type": "library",
+      "name": "github.com/fatih/color",
+      "version": "v1.18.0",
+      "cpe": "cpe:2.3:a:fatih:color:v1.18.0:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/fatih/color@v1.18.0",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:S8gINlzdQ840/4pfAwic/ZE0djQEH3wM94VfqLTZcOM="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/go-chi/chi@v1.5.5?package-id=fc7bad8c0c546ac5",
+      "type": "library",
+      "name": "github.com/go-chi/chi",
+      "version": "v1.5.5",
+      "cpe": "cpe:2.3:a:go-chi:chi:v1.5.5:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/go-chi/chi@v1.5.5",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:go_chi:chi:v1.5.5:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:go:chi:v1.5.5:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:vOB/HbEMt9QqBqErz07QehcOKHaWFtuj87tTDVz2qXE="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/inconshreveable/mousetrap@v1.1.0?package-id=f6300927a9f6b106",
+      "type": "library",
+      "name": "github.com/inconshreveable/mousetrap",
+      "version": "v1.1.0",
+      "cpe": "cpe:2.3:a:inconshreveable:mousetrap:v1.1.0:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/inconshreveable/mousetrap@v1.1.0",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/mattn/go-colorable@v0.1.13?package-id=898b7c8b52706e63",
+      "type": "library",
+      "name": "github.com/mattn/go-colorable",
+      "version": "v0.1.13",
+      "cpe": "cpe:2.3:a:mattn:go-colorable:v0.1.13:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/mattn/go-colorable@v0.1.13",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:mattn:go_colorable:v0.1.13:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/mattn/go-isatty@v0.0.20?package-id=f4619afab7c4111c",
+      "type": "library",
+      "name": "github.com/mattn/go-isatty",
+      "version": "v0.0.20",
+      "cpe": "cpe:2.3:a:mattn:go-isatty:v0.0.20:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/mattn/go-isatty@v0.0.20",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:mattn:go_isatty:v0.0.20:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/pmezard/go-difflib@v1.0.0?package-id=2e9153c8c5a4f906",
+      "type": "library",
+      "name": "github.com/pmezard/go-difflib",
+      "version": "v1.0.0",
+      "cpe": "cpe:2.3:a:pmezard:go-difflib:v1.0.0:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/pmezard/go-difflib@v1.0.0",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:cpe23",
+          "value": "cpe:2.3:a:pmezard:go_difflib:v1.0.0:*:*:*:*:*:*:*"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/sirupsen/logrus@v1.9.3?package-id=0a1f05f2e6d2daa5",
+      "type": "library",
+      "name": "github.com/sirupsen/logrus",
+      "version": "v1.9.3",
+      "cpe": "cpe:2.3:a:sirupsen:logrus:v1.9.3:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/sirupsen/logrus@v1.9.3",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:dueUQJ1C2q9oE3F7wvmSGAaVtTmUizReu6fjN8uqzbQ="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/spf13/cobra@v1.9.1?package-id=68dcc3b1ce534ce2",
+      "type": "library",
+      "name": "github.com/spf13/cobra",
+      "version": "v1.9.1",
+      "cpe": "cpe:2.3:a:spf13:cobra:v1.9.1:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/spf13/cobra@v1.9.1",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:CXSaggrXdbHK9CF+8ywj8Amf7PBRmPCOJugH954Nnlo="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/spf13/pflag@v1.0.6?package-id=614dd7b514b55164",
+      "type": "library",
+      "name": "github.com/spf13/pflag",
+      "version": "v1.0.6",
+      "cpe": "cpe:2.3:a:spf13:pflag:v1.0.6:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/spf13/pflag@v1.0.6",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:jFzHGLGAlb3ruxLB8MhbI6A8+AQX/2eW4qeyNZXNp2o="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/github.com/stretchr/testify@v1.10.0?package-id=d4d0576c4c3746f0",
+      "type": "library",
+      "name": "github.com/stretchr/testify",
+      "version": "v1.10.0",
+      "cpe": "cpe:2.3:a:stretchr:testify:v1.10.0:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/github.com/stretchr/testify@v1.10.0",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/golang.org/x/sys@v0.25.0?package-id=1e8c7467caf8d2dc",
+      "type": "library",
+      "name": "golang.org/x/sys",
+      "version": "v0.25.0",
+      "cpe": "cpe:2.3:a:golang:x\\/sys:v0.25.0:*:*:*:*:*:*:*",
+      "purl": "pkg:golang/golang.org/x/sys@v0.25.0",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:r+8e+loiHxRqhXVl6ML1nO3l1+oFoWbnlu2Ehimmi34="
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/gopkg.in/yaml.v3@v3.0.1?package-id=716c668b92999095",
+      "type": "library",
+      "name": "gopkg.in/yaml.v3",
+      "version": "v3.0.1",
+      "cpe": "cpe:2.3:a:yaml_project:yaml:v3.0.1:*:*:*:*:go:*:*",
+      "purl": "pkg:golang/gopkg.in/yaml.v3@v3.0.1",
+      "properties": [
+        {
+          "name": "syft:package:foundBy",
+          "value": "go-module-file-cataloger"
+        },
+        {
+          "name": "syft:package:language",
+          "value": "go"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "go-module"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "go-module-entry"
+        },
+        {
+          "name": "syft:location:0:path",
+          "value": "/go.mod"
+        },
+        {
+          "name": "syft:metadata:h1Digest",
+          "value": "h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA="
+        }
+      ]
+    },
+    {
+      "bom-ref": "af2573ca775a0300",
+      "type": "file",
+      "name": "/home/chino/dev/muxingbird/.github/actions/setup-workspace/action.yaml",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "cfb90201645f0db690f61aa9e30490d934673de5"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "5a235b72fe97a8c4af643e7c40f2e96697e460b4e900381f5f391154bcc5949a"
+        }
+      ]
+    },
+    {
+      "bom-ref": "0c62edaa9b445295",
+      "type": "file",
+      "name": "/home/chino/dev/muxingbird/.github/workflows/linting.yaml",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "ee653ddff69a6a078c31c19322c332a46413b561"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "92cfbdda03f5b22f06f6994888cfcc65f032a3765f25363012a9b32282e7225c"
+        }
+      ]
+    },
+    {
+      "bom-ref": "3dfd1ac2074a5862",
+      "type": "file",
+      "name": "/home/chino/dev/muxingbird/.github/workflows/release.yaml",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "2e9c60e4614b39ee9e4d1ad30d40936b320bb77f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "11a591d6e05b6ae4ba1a56e5a88bc8bbc577ca391da546ee88fae6eece348367"
+        }
+      ]
+    },
+    {
+      "bom-ref": "50d057936c89e3ce",
+      "type": "file",
+      "name": "/home/chino/dev/muxingbird/.github/workflows/testing.yaml",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "0b35f9456e66863c23af6cfb00a7a226a3dd8d19"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "47ecfc5d75b0ead4f9a1a22cbdac9f3047e02099385c4c8062f1829b8af6df92"
+        }
+      ]
+    },
+    {
+      "bom-ref": "3fc5a8d3d86e9790",
+      "type": "file",
+      "name": "/home/chino/dev/muxingbird/go.mod",
+      "hashes": [
+        {
+          "alg": "SHA-1",
+          "content": "a283094294ddce791fc9fbd28f0367b6bde1d55f"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "f284ced94fa20c8a8e82f58df79535bf00da9dc045295bb432f5af4eaf9648a2"
+        }
+      ]
+    }
+  ]
+}

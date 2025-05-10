@@ -32,5 +32,11 @@ COPY --from=build /src/muxingbird /muxingbird
 ARG PORT=8000
 EXPOSE ${PORT}
 
+LABEL title="Muxingbird CLI"
+LABEL description="Mock HTTP server for route simulation"
+LABEL author="Joaquin Franco"
+LABEL source="https://github.com/jgfranco17/muxingbird"
+LABEL licenses="BSD 3-Clause"
+
 ENTRYPOINT [ "/muxingbird" ]
 CMD [ "--help" ]
