@@ -5,8 +5,8 @@
 ARG GO_VERSION=1.23
 FROM golang:${GO_VERSION} AS build
 
-COPY . /app
-WORKDIR /app
+COPY . /src
+WORKDIR /src
 
 ARG VERSION=0.0.0
 RUN go mod download all && \
@@ -19,10 +19,10 @@ RUN go mod download all && \
 FROM alpine:3.21 AS app
 
 RUN --mount=type=cache,target=/var/cache/apk \
-    apk --update add ca-certificates tzdata \
-    && update-ca-certificates
+    apk --update add ca-certificates tzdata && \
+    update-ca-certificates
 
-COPY --from=build /app/muxingbird /muxingbird
+COPY --from=build /src/muxingbird /muxingbird
 
 ARG PORT=8000
 EXPOSE ${PORT}

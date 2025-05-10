@@ -43,10 +43,8 @@ install-local: build
 
 # Build the Docker image
 docker-build:
-    docker compose -f docker-compose.yaml build --no-cache
+    docker compose build --no-cache
 
 # Run the CLI in Docker
 docker-run *args:
-    docker compose \
-        -f docker-compose.yaml \
-        run --rm --remove-orphans muxingbird-cli {{ args }}
+    @docker compose run --rm --remove-orphans muxingbird {{ args }}

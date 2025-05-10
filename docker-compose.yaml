@@ -1,6 +1,7 @@
 services:
-  muxingbird-cli:
-    container_name: muxingbird-cli
+  muxingbird:
+    container_name: muxingbird
+    image: "muxingbird-cli:dev"
     build:
       context: .
       dockerfile: docker/cli.Dockerfile
