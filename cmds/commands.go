@@ -42,7 +42,7 @@ func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 			if err != nil {
 				return errorx.NewErrorWithCode(err, errorx.ExitConfigError)
 			}
-			logger.Debugf("Server configured with uptime of %s", activeDuration)
+			logger.Debugf("Server configured on port %d with uptime of %s", port, activeDuration)
 			return server.Run(ctx)
 		},
 		SilenceUsage:  true,

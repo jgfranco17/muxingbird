@@ -50,9 +50,8 @@ func NewCommandRegistry(name string, description string, version string) *Comman
 
 // RegisterCommand registers a new command within the CommandRegistry
 func (cr *CommandRegistry) RegisterCommands(commands []*cobra.Command) {
-	for _, cmd := range commands {
-		cr.rootCmd.AddCommand(cmd)
-	}
+	cr.rootCmd.AddCommand(commands...)
+	cr.logger.Tracef("Registered %d commands to Muxingbird CLI", len(commands))
 }
 
 // Execute executes the root command and handles

@@ -42,7 +42,7 @@ func NewTestLogger(t *testing.T) *logrus.Logger {
 	t.Helper()
 	logger := logrus.New()
 	logger.SetOutput(new(bytes.Buffer))
-	logger.Level = logrus.DebugLevel
+	logger.Level = logrus.TraceLevel
 	logger.SetReportCaller(true)
 	logger.SetFormatter(new(logrus.TextFormatter))
 	return logger
