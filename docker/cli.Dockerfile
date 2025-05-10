@@ -8,9 +8,14 @@ FROM golang:${GO_VERSION} AS build
 COPY . /src
 WORKDIR /src
 
+RUN --mount=type=cache,target=/go/pkg/mod/ \
+    --mount=type=bind,source=go.mod,target=go.mod \
+    go mod download -x
+
+ARG TARGETOS=linux
 ARG VERSION=0.0.0
-RUN go mod download all && \
-    CGO_ENABLED=0 GOOS=linux go build \
+RUN --mount=type=cache,target=/go/pkg/mod/ \
+    CGO_ENABLED=0 GOOS=${TARGETOS} go build \
         -ldflags="-X main.version=${VERSION}" \
         -o ./muxingbird .
 
