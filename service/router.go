@@ -30,7 +30,7 @@ func NewRestService(ctx context.Context, r io.Reader, port int) (*Server, error)
 	logger := logging.FromContext(ctx)
 	cfg, err := LoadFromContent(r)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to read config: %w", err)
+		return nil, fmt.Errorf("failed to read config: %w", err)
 	}
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)

@@ -1,4 +1,4 @@
-name: Pre-commit
+name: Linting
 
 on:
   push:
@@ -7,21 +7,27 @@ on:
   pull_request:
 
 jobs:
-  pre-commit:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up workspace
+        uses: ./.github/actions/setup-workspace
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
-      - name: Install pre-commit
+      - name: Install linting tools
         run: |
           pip install pre-commit
+          curl -sSfL \
+            https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- \
+            -b $(go env GOPATH)/bin v2.1.6
 
-      - name: Run pre-commit
+      - name: Run linters
         run: |
           pre-commit run --all-files --verbose

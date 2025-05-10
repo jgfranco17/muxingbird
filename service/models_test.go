@@ -76,5 +76,5 @@ func TestLoadFromContent_ParserSuccess(t *testing.T) {
 func TestLoadFromContentFail_InvalidContentFormat(t *testing.T) {
 	mockContent := strings.NewReader("foo bar")
 	_, err := LoadFromContent(mockContent)
-	assert.ErrorContains(t, err, "Invalid config format")
+	assert.ErrorContains(t, err, "invalid config format")
 }

@@ -12,7 +12,7 @@ func CreateNewMockHandler(statusCode int, content any) http.HandlerFunc {
 		w.WriteHeader(statusCode)
 		err := json.NewEncoder(w).Encode(content)
 		if err != nil {
-			http.Error(w, "Failed to serve mock endpoint", http.StatusInternalServerError)
+			http.Error(w, "failed to serve mock endpoint", http.StatusInternalServerError)
 			return
 		}
 	}

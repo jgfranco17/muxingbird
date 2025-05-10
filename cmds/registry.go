@@ -7,10 +7,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	verbosity int
-)
-
 // CommandRegistry wraps the root command and core
 // attributes of the CLI.
 type CommandRegistry struct {

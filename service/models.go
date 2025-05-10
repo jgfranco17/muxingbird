@@ -27,7 +27,7 @@ type Route struct {
 func LoadFromContent(r io.Reader) (*ServerConfig, error) {
 	var server ServerConfig
 	if err := yaml.NewDecoder(r).Decode(&server); err != nil {
-		return nil, fmt.Errorf("Invalid config format: %w", err)
+		return nil, fmt.Errorf("invalid config format: %w", err)
 	}
 	return &server, nil
 }
