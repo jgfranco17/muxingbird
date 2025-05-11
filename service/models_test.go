@@ -1,12 +1,21 @@
 package service
 
 import (
+	"bytes"
+	"context"
+	"errors"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
+
+type mockWriter struct{}
+
+func (m *mockWriter) Write(p []byte) (int, error) {
+	return 0, errors.New("write failed")
+}
 
 func TestLoadFromContent_ParserSuccess(t *testing.T) {
 	mockContent := strings.NewReader(`{
@@ -77,4 +86,32 @@ func TestLoadFromContentFail_InvalidContentFormat(t *testing.T) {
 	mockContent := strings.NewReader("foo bar")
 	_, err := LoadFromContent(mockContent)
 	assert.ErrorContains(t, err, "invalid config format")
+}
+
+func TestInitContent_WriteSuccess(t *testing.T) {
+	expectedContent := `{
+  "name": "new-mock-server",
+  "routes": [
+    {
+      "path": "/hello",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "message": "Hello, world!"
+      }
+    }
+  ]
+}
+`
+	buf := new(bytes.Buffer)
+	err := InitConfig(context.Background(), buf)
+	require.NoError(t, err, "unexpected error while writing new default config")
+	assert.Equal(t, expectedContent, buf.String())
+}
+
+func TestInitConfig_WriteError(t *testing.T) {
+	ctx := context.Background()
+	err := InitConfig(ctx, &mockWriter{})
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "failed to write config")
 }

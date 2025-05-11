@@ -18,6 +18,7 @@ func main() {
 	command := cmds.NewCommandRegistry(projectName, projectDescription, version)
 	commandsList := []*cobra.Command{
 		cmds.CommandRun(cmds.DefaultServiceFactory),
+		cmds.CommandInit(),
 	}
 	command.RegisterCommands(commandsList)
 	command.Execute()
