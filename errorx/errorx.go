@@ -1,3 +1,8 @@
+// Package errorx provides utilities for error handling with associated exit codes.
+// This package introduces a custom error type which wraps errors and associates
+// them with a specific exit code. The exit codes are useful for controlling the
+// exit behavior of the application, allowing different types of errors to trigger
+// specific exit codes.
 package errorx
 
 import (
