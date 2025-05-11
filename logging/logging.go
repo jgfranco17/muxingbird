@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/fatih/color"
+	"github.com/jgfranco17/muxingbird/outputs"
 	"github.com/sirupsen/logrus"
 )
 
@@ -40,13 +41,12 @@ type CustomFormatter struct{}
 // Format the log entry into clean, colored log messages.
 func (f *CustomFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	timestamp := entry.Time.Format(time.TimeOnly)
-	colorFunc := color.New(setOutputColorPerLevel(entry.Level), color.Bold).SprintFunc()
-	coloredLevel := colorFunc(strings.ToUpper(entry.Level.String()))
+	coloredLevel := getColoredLevel(entry.Level)
 	logMessage := fmt.Sprintf("[%s][%s] %s\n", timestamp, coloredLevel, entry.Message)
 	return []byte(logMessage), nil
 }
 
-func setOutputColorPerLevel(level logrus.Level) color.Attribute {
+func getColoredLevel(level logrus.Level) string {
 	var selectedColor color.Attribute
 	switch level {
 	case logrus.TraceLevel:
@@ -57,10 +57,16 @@ func setOutputColorPerLevel(level logrus.Level) color.Attribute {
 		selectedColor = color.FgGreen
 	case logrus.WarnLevel:
 		selectedColor = color.FgYellow
-	case logrus.ErrorLevel, logrus.PanicLevel, logrus.FatalLevel:
+	case logrus.ErrorLevel:
 		selectedColor = color.FgRed
+	case logrus.FatalLevel, logrus.PanicLevel:
+		selectedColor = color.FgHiRed
 	default:
 		selectedColor = color.FgWhite
 	}
-	return selectedColor
+	opts := &outputs.ColorOpts{
+		Color: selectedColor,
+		Bold:  true,
+	}
+	return outputs.ColorString(opts, strings.ToUpper(level.String()))
 }

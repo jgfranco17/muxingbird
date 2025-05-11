@@ -41,7 +41,7 @@ func NewRestService(ctx context.Context, r io.Reader, port int) (*Server, error)
 		router.MethodFunc(e.Method, e.Path, handler)
 		logger.Tracef("Registered route: %s %s (returns HTTP %d)", e.Method, e.Path, e.Status)
 	}
-	logger.Debugf("Loaded %d routes from specification", len(cfg.Routes))
+	logger.Tracef("Loaded %d routes from specification", len(cfg.Routes))
 	return &Server{
 		router: router,
 		port:   port,

@@ -6,9 +6,20 @@ import (
 	"github.com/fatih/color"
 )
 
-func ColorString(textColor color.Attribute, bold bool, message string, args ...any) string {
-	baseColorFormat := color.New(textColor)
-	if bold {
+type ColorOpts struct {
+	Color color.Attribute
+	Bold  bool
+}
+
+func ColorString(opts *ColorOpts, message string, args ...any) string {
+	if opts == nil {
+		opts = &ColorOpts{
+			Color: color.FgWhite,
+			Bold:  false,
+		}
+	}
+	baseColorFormat := color.New(opts.Color)
+	if opts.Bold {
 		baseColorFormat.Add(color.Bold)
 	}
 	colorFunc := baseColorFormat.SprintFunc()
