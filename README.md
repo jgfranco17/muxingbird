@@ -83,7 +83,7 @@ To verify the installation, you can call the CLI `help` flag for a basic usage g
 
 ```console
 $ muxingbird --help
-Muxingbird: spin up HTTP servers with a few clicks
+Muxingbird: spin up configurable mock HTTP servers
 
 Usage:
   muxingbird [command]
@@ -91,6 +91,7 @@ Usage:
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
   help        Help about any command
+  init        Generate a starter mock config file
   run         Run the server from the config
 
 Flags:

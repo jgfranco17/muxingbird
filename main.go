@@ -7,7 +7,7 @@ import (
 
 const (
 	projectName        = "muxingbird"
-	projectDescription = "Muxingbird: spin up HTTP servers with a few clicks"
+	projectDescription = "Muxingbird: spin up configurable mock HTTP servers"
 )
 
 var (
