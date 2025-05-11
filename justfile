@@ -29,12 +29,18 @@ test:
 # ========== DEPLOYMENT & BUILD ==========
 
 # Generate a SBOM file for the project
-sbom:
+generate-sbom:
     #!/usr/bin/env bash
     mkdir -p sbom
     SBOM_PATH="sbom/muxingbird-sbom-{{ VERSION }}.spdx.json"
     syft dir:. -o cyclonedx-json | jq . > "${SBOM_PATH}"
     echo "Generated SBOM file: ${SBOM_PATH}"
+
+# Validate the latest SBOM file
+validate-sbom:
+    #!/usr/bin/env bash
+    SBOM_PATH="sbom/muxingbird-sbom-{{ VERSION }}.spdx.json"
+    cyclonedx validate --input-file "${SBOM_PATH}"
 
 # Build a local binary
 build:

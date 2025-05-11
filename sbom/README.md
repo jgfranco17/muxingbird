@@ -14,31 +14,18 @@ Including an SBOM provides critical benefits:
   14028, NIST SSDF).
 - **Reproducibility**: Helps others verify or reproduce builds accurately.
 
-## Tooling: [Syft](https://github.com/anchore/syft)
+## Tooling
 
-We use [`syft`](https://github.com/anchore/syft) by Anchore to generate SBOMs in multiple
-standard formats.
-
-### 🔧 Installation
-
-If you do not have `syft` installed, you can install it with this shell script:
-
-```bash
-#!/usr/bin/env bash
-if ! command -v syft &> /dev/null; then
-  echo "Syft not found. Installing..."
-  curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b "$HOME/.local/bin"
-else
-  echo "Syft already installed."
-fi
-```
+We use [`syft`](https://github.com/anchore/syft) to generate SBOMs in multiple standard formats,
+and [`cyclonedx`](https://github.com/CycloneDX/cyclonedx-cli) to validate the entries.
 
 ## Generating a New SBOM File
 
-From the project root, you can regenerate the SBOM as follows:
+From the project root, the Justfile provides basic utilities to create and validate SBOM files:
 
 ```bash
-just sbom
+just generate-sbom
+just validate-sbom
 ```
 
 ## Notes
