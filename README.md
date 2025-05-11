@@ -28,6 +28,10 @@ cd muxingbird
 go mod tidy
 ```
 
+The project uses `just` as our command runner. You can get a list of available recipes by
+executing `just` with no arguments. While not required, the scripts provided will largely
+help in quickly and reproducibly setting up your development environment.
+
 ### Build with Go
 
 To run the CLI as a locally-built executable, we can build with Go. For convenience, a Just
