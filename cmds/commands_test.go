@@ -40,7 +40,7 @@ func TestRunCommandSuccess(t *testing.T) {
 	mock := &mockService{}
 	factory := newMockFactory(mock)
 	cmd := CommandRun(factory)
-	result := internal.ExecuteTestCommand(t, cmd, testValidSpecJsonFile)
+	result := internal.ExecuteTestCommand(t, cmd, "-f", testValidSpecJsonFile)
 	assert.NoError(t, result.Error, "Unexpected error while executing run command")
 }
 
@@ -48,7 +48,7 @@ func TestRunCommandFail_InvalidPath(t *testing.T) {
 	mock := &mockService{}
 	factory := newMockFactory(mock)
 	cmd := CommandRun(factory)
-	result := internal.ExecuteTestCommand(t, cmd, "nonexistent")
+	result := internal.ExecuteTestCommand(t, cmd, "-f", "nonexistent")
 	assert.ErrorContains(t, result.Error, "no such file")
 }
 
@@ -58,7 +58,7 @@ func TestRunCommandFail_ServiceFactoryError(t *testing.T) {
 	}
 	factory := newMockFactory(mock)
 	cmd := CommandRun(factory)
-	result := internal.ExecuteTestCommand(t, cmd, testValidSpecJsonFile)
+	result := internal.ExecuteTestCommand(t, cmd, "-f", testValidSpecJsonFile)
 	assert.ErrorContains(t, result.Error, "some mock error")
 }
 

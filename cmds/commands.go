@@ -20,18 +20,20 @@ const (
 
 // CommandRun creates a new Cobra command for running the HTTP service.
 func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
+	var configFile string
 	var port int
 	var activeDuration time.Duration
+
 	cmd := &cobra.Command{
 		Use:   "run",
-		Args:  cobra.ExactArgs(1),
+		Args:  cobra.ExactArgs(0),
 		Short: "Run the server from the config",
 		Long:  "Spin up the HTTP service based on the definitions file",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			logger := logging.FromContext(cmd.Context())
 			ctx, cancel := context.WithTimeout(cmd.Context(), activeDuration)
 			defer cancel()
-			path, err := filepath.Abs(args[0])
+			path, err := filepath.Abs(configFile)
 			if err != nil {
 				return errorx.NewErrorWithCode(err, errorx.ExitInvalidArgs)
 			}
@@ -50,8 +52,11 @@ func CommandRun(serviceFactory ServiceFactory) *cobra.Command {
 		SilenceUsage:  true,
 		SilenceErrors: true,
 	}
+
+	cmd.Flags().StringVarP(&configFile, "config-file", "f", service.ConfigFileName, "Service definition file")
 	cmd.Flags().DurationVarP(&activeDuration, "duration", "d", defaultMaxDuration, "Maximum duration to run server")
 	cmd.Flags().IntVarP(&port, "port", "p", defaultPort, "Port to run server on")
+
 	return cmd
 }
 
