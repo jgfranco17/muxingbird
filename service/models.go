@@ -9,6 +9,10 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+const (
+	ConfigFileName string = "muxingbird.yaml"
+)
+
 // ServerConfig represents a single HTTP server's configuration.
 type ServerConfig struct {
 	Name   string  `json:"name"`
